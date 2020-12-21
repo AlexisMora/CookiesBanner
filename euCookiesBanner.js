@@ -1,14 +1,10 @@
-// by Alexis Mora
-
 var cookieDuration = 14                      // Number of days before the cookie expires, and the banner reappears
 var cookieName = 'ac_cookies'               // Name of our cookie
 var cookieValue = 'on'                     // Value of cookie
-var bannerText = 'TO-DO'                  //The text our banner will recieve
 
 function createBanner(){
-    let divLinkPrivacyCookies = 'TO-DO' //<a href="/privacy-cookies-policy/" rel="nofollow" title="Privacy &amp; Cookies Policy">privacy and cookies policy</a>
-    //TO-DO: 
-        //We have to create the banner with the cookies, on accept it has to create the cookie and close the banner.
+    let divLinkPrivacyCookies = 'TO-DO' 
+ 
         let texts = getTextsByLang()
     bootbox.dialog({
         message: texts.message,
@@ -22,7 +18,6 @@ function createBanner(){
                 label: texts.buttonCaption,
                 className: 'btn-primary',
                 callback: ()=>{
-                    console.log("KLK")
                     createCookie(window.cookieName,window.cookieValue, window.cookieDuration)} // Create the cookie 
             },
         }
@@ -51,15 +46,13 @@ function checkCookie(name) {
     return null;
 }
  
-function eraseCookie(name) {
-    createCookie(name,"",-1);
-}
- 
+
 window.onload = function(){
     if(checkCookie(window.cookieName) != window.cookieValue){
         createBanner(); 
     }
 }
+
 function getTextsByLang(){
     let lang = document.querySelector('#dropDownLag > img').alt
     switch(lang){
